@@ -28,8 +28,12 @@ class ListUser extends Model
         return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
+    // public function orders()
+    // {
+    //     return $this->belongsToMany(Order::class, 'list_user_order', 'user_id', 'order_id');
+    // }
     public function orders()
     {
-        return $this->belongsToMany(Order::class, 'list_user_order', 'user_id', 'order_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 }

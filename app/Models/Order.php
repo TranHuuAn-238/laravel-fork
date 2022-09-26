@@ -29,8 +29,8 @@ class Order extends Model
         'status',
     ];
 
-    public function listUsers()
-    {
-        return $this->belongsToMany(ListUser::class, 'list_user_order', 'user_id', 'order_id');
-    }
+    // public function listUsers()
+    // {
+    //     return $this->belongsToMany(ListUser::class, 'list_user_order', 'user_id', 'order_id');
+    // }
 }

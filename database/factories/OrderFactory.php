@@ -32,6 +32,8 @@ class OrderFactory extends Factory
             'name_song' => fake()->name(),
             'link_song' => $faker->youtubeUri(),
             'message' => $faker->text(),
+            'approved_at' => now(),
+            'banned' => rand(0,1),
             'status' => rand(0,1),
         ];
     }

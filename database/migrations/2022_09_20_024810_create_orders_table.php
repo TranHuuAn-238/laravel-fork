@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            // $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('name_song');
             $table->string('link_song');
             $table->text('message')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->boolean('banned')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

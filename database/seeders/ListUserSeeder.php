@@ -22,13 +22,14 @@ class ListUserSeeder extends Seeder
         //     Role::factory()->count(1)
 
         // )
-        ->hasAttached(
-            Order::factory()->count(3),
-            [
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        )
+        // ->hasAttached(
+        //     Order::factory()->count(3),
+        //     [
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // )
+        ->has(Order::factory()->count(3))
         ->create();
 
         // Get all the roles attaching up to 2 random roles to each user
