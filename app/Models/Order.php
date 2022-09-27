@@ -26,6 +26,8 @@ class Order extends Model
         'name_song',
         'link_song',
         'message',
+        'approved_at',
+        'banned',
         'status',
     ];
 
