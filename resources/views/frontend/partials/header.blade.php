@@ -3,10 +3,10 @@
     <nav class="secondary-menu">
         <div class="container">
             <!-- secondary menu left link area -->
-            <div class="sm-left">
+            {{-- <div class="sm-left">
                 <strong>Phone</strong>:&nbsp; <a href="#">555 555 555</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <strong>E-mail</strong>:&nbsp; <a href="#">music.site@melodi.com</a>
-            </div>
+            </div> --}}
             <!-- secondary menu right link area -->
             <div class="sm-right">
                 <!-- social link -->
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- logo area -->
-                <a class="navbar-brand" href="#home">
+                <a class="navbar-brand" href="{{ route('frontend.home.index') }}">
                     <!-- logo image -->
                     <img class="img-responsive" src="{{ asset('frontend/img/logo/logo.png') }}" alt="" />
                 </a>
@@ -41,13 +41,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#latestalbum">Latest Album</a></li>
-                    <li><a href="#featuredalbum">Featured Album</a></li>
-                    <li><a href="#joinus">Join Us</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#listofsongs">List of songs</a></li>
+                    {{-- <li><a href="#featuredalbum">Featured Album</a></li> --}}
+                    {{-- <li><a href="#joinus">Join Us</a></li> --}}
+                    <li><a href="#listmessages">List messages</a></li>
+                    <li><a href="#radio">Radio</a></li>
+                    {{-- <li><a href="#team">Team</a></li> --}}
+                    {{-- <li><a href="#contact">Contact</a></li> --}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

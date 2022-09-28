@@ -12,7 +12,7 @@
                         <!-- paragraph -->
                         <h3 class="animated fadeInRightBig">Find More Innovative &amp; Creative Music Albums.</h3>
                         <!-- button -->
-                        <a href="#" class="animated fadeIn btn btn-theme">Download Here</a>
+                        <a href="#listofsongs" class="animated fadeIn btn btn-theme">Order Now</a>
                     </div>
                 </div>
             </div>

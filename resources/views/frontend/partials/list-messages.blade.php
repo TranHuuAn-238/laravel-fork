@@ -1,9 +1,9 @@
-<div class="portfolio pad" id="portfolio">
+<div class="portfolio pad" id="listmessages">
     <div>
         <!-- default heading -->
         <div class="default-heading">
             <!-- heading -->
-            <h2>Portfolio</h2>
+            <h2>List messages</h2>
         </div>
     </div>
     <!-- portfolio -->
@@ -129,8 +129,8 @@
             </div>
         </div>
     </div>
-    <div class="text-center">
+    {{-- <div class="text-center">
         <a href="#" class="btn btn-lg btn-theme">View more</a>
-    </div>
+    </div> --}}
     <!-- portfolio end -->
 </div>

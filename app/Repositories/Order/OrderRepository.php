@@ -3,12 +3,20 @@ namespace App\Repositories\Order;
 
 use App\Repositories\BaseRepository;
 use Exception;
+use App\Models\Order;
 
 class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 {
     public function getModel()
     {
         return \App\Models\Order::class;
+    }
+
+    public function getOrder()
+    {
+        $ordersList = Order::orderBy('id', 'desc')->take(10)->get();
+        
+        return $ordersList;
     }
 
     public function createOrder($request)
@@ -24,5 +32,18 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         }
 
         return $result;
+    }
+
+    public function getOrderByUser()
+    {
+        $userId = 1;
+        
+        try {
+            $ordersListByUser = Order::orderBy('id', 'desc')->where('user_id', $userId)->paginate(10);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return $ordersListByUser;
     }
 }

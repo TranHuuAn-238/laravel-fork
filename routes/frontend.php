@@ -16,4 +16,5 @@ use App\Http\Controllers\Frontend\HomeController;
 
 Route::name('frontend.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/list-ordered', [HomeController::class, 'listOrdered'])->name('manage.list.ordered');
 });

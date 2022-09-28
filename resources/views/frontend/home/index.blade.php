@@ -66,7 +66,7 @@
     </div>
 </div>
 
-<div id="latestalbum" class="hero pad">
+<div id="listofsongs" class="hero pad">
     <div class="container">
         <!-- hero content -->
         <div class="hero-content ">
@@ -112,6 +112,10 @@
                         </style>
                         <button type="button" class="btnHover" data-toggle="modal" data-target="#order">
                             <a href="#" class="btn btn-lg btn-theme" id="playNowBtn"><i class="fa fa-play"></i>&nbsp; Order Ngay</a>
+                        </button>
+                        <span> Or </span>
+                        <button type="button" class="btnHover">
+                            <a href="{{ route('frontend.manage.list.ordered') }}" class="btn btn-lg btn-theme" id="playNowBtn"><i class="fa fa-play"></i>&nbsp; Quan ly</a>
                         </button>
                     </div>
                 </div>

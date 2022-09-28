@@ -1,13 +1,13 @@
-<div class="events parallax-three pad" id="events">
+<div class="events parallax-three pad" id="radio">
     <div class="container">
         <!-- default heading -->
         <div class="default-heading-shadow">
             <!-- heading -->
-            <h2>Coming Events</h2>
+            <h2>Radio</h2>
         </div>
         <!-- events element -->
         <div class="events-element">
-            <div class="row">
+            <div class="row" style="display: flex; justify-content: center;">
                 <div class="col-md-6 col-sm-6">
                     <!-- event item -->
                     <div class="events-item ">
@@ -21,7 +21,7 @@
                                 <span class="etime">06:30 pm</span>
                             </div>
                             <!-- event location -->
-                            <span class="event-location"><i class="fa fa-map-marker"></i> New York</span>
+                            <span class="event-location"><i class="fa fa-map-marker"></i> Zinza Technology</span>
                             <!-- image -->
                             <img class="img-responsive" src="{{ asset('frontend/img/event/1.jpg') }}" alt="" />
                             <!-- image hover -->
@@ -33,16 +33,16 @@
                         <!-- event information -->
                         <div class="event-info">
                             <!-- event title -->
-                            <h3>Sound Of melodi In Instrumesnts</h3>
+                            <h3>Title</h3>
                             <!-- horizontal line --><hr />
                             <!-- paragraph -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed doconsect etur eiusmod teme et dolore magna aliqua... <a href="#">more</a></p>
+                            <p>This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content </p>
                             <!-- buy ticket button link -->
-                            <button href="#bookTicket" class="btn btn-lg btn-theme" data-toggle="modal" >Book Ticket</button>
+                            {{-- <button href="#bookTicket" class="btn btn-lg btn-theme" data-toggle="modal" >Book Ticket</button> --}}
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                {{-- <div class="col-md-6 col-sm-6">
                     <!-- event item -->
                     <div class="events-item ">
                         <!-- image container -->
@@ -143,7 +143,7 @@
                             <button href="#bookTicket" class="btn btn-lg btn-theme" data-toggle="modal" >Book Ticket</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
