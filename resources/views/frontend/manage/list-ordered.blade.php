@@ -44,7 +44,7 @@
                                 </div>
                                 <!-- music icon -->
                                 <div class="music-icon">
-                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('frontend.manage.detail.ordered', ['id' => $orderByUser->id]) }}"><i class="fa fa-eye"></i></a>
                                     {{-- <a href="#"><i class="fa fa-pause"></i></a> --}}
                                 </div>
                                 <div class="clearfix"></div>
@@ -55,6 +55,7 @@
             </div>
         </div>
 
+        <br>
         <div class="backToOrder">
             <a href="{{ route('frontend.home.index') . '#listofsongs'}}"> ->Back to order songs...</a>
         </div>

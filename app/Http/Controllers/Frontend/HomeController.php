@@ -25,7 +25,13 @@ class HomeController extends Controller
 
     public function listOrdered()
     {
-        $ordersListByUser = $this->orderRepo->getOrderByUser();
+        $ordersListByUser = $this->orderRepo->getOrdersByUser();
         return view('frontend.manage.list-ordered', compact('ordersListByUser'));
+    }
+
+    public function detailOrdered($id)
+    {
+        $order = $this->orderRepo->getOrderToView($id);
+        return view('frontend.manage.detail-ordered', compact('order'));
     }
 }

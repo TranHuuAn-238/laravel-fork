@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    const BANNED = 1;
+
     /**
      * The table associated with the model.
      *

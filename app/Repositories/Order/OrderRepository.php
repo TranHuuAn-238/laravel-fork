@@ -34,7 +34,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         return $result;
     }
 
-    public function getOrderByUser()
+    public function getOrdersByUser()
     {
         $userId = 1;
         
@@ -45,5 +45,16 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         }
 
         return $ordersListByUser;
+    }
+
+    public function getOrderToView($id)
+    {
+        try {
+            $order = Order::find($id);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return $order;
     }
 }
