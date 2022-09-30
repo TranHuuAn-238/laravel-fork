@@ -16,4 +16,6 @@ use App\Http\Controllers\Backend\CreateController;
 
 Route::name('handle.')->group(function () {    
     Route::post('/handle-create-order', [CreateController::class, 'handleCreateOrder'])->name('create.order');
+    Route::post('/handle-edit-order/{id}', [CreateController::class, 'handleEditOrder'])->name('edit.order');
+    Route::get('/handle-delete-order/{id}', [CreateController::class, 'handleDeleteOrder'])->name('delete.order');
 });

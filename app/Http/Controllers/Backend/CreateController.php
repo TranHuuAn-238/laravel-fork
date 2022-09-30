@@ -39,4 +39,24 @@ class CreateController extends Controller
         $nameSong = $request->name_song;
         return redirect()->route('frontend.home.index')->with('nameSong', $nameSong);
     }
+
+    public function handleEditOrder(Request $request, $id)
+    {
+        try {
+            $this->orderRepo->editOrder($request, $id);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        $nameSong = $request->name_song;
+        return redirect()->route('frontend.manage.detail.ordered', ['id' => $id])->with('notif', 'Update order song successfully!');
+    }
+
+    public function handleDeleteOrder($id)
+    {
+        $nameSongDeleted = Order::where('id', $id)->value('name_song');
+        $this->orderRepo->deleteOrder($id);
+
+        return redirect()->route('frontend.manage.list.ordered')->with('nameSongDeleted', $nameSongDeleted);
+    }
 }

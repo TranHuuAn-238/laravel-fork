@@ -34,27 +34,45 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         return $result;
     }
 
+    public function editOrder($request, $id)
+    {
+        try {
+            $data = $request->all();
+            // $user = ['user_id' => 1];
+
+            //$result = Order::create(array_merge($user, $data)); // $user + $data
+            // $result = $this->model->update($id, (array_merge($user, $data)));
+            $order = Order::find($id);
+            $order->user_id = 1;
+            $order->name_song = $data['name_song'];
+            $order->link_song = $data['link_song'];
+            $order->message = $data['message'];
+            $order->save();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function deleteOrder($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+    }
+
     public function getOrdersByUser()
     {
         $userId = 1;
         
-        try {
-            $ordersListByUser = Order::orderBy('id', 'desc')->where('user_id', $userId)->paginate(10);
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
+        $ordersListByUser = Order::orderBy('id', 'desc')->where('user_id', $userId)->paginate(10);
 
         return $ordersListByUser;
     }
 
     public function getOrderToView($id)
     {
-        try {
-            $order = Order::find($id);
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-
+        // $order = Order::find($id);
+        $order = $this->model->find($id);
+        
         return $order;
     }
 }

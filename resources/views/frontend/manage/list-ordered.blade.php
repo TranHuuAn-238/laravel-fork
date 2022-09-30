@@ -25,7 +25,9 @@
         <hr>
         <!-- paragraph -->
         {{-- <p>We sing the best <strong class="theme-color">Songs</strong> and now we control the world best <strong class="theme-color">Music</strong>.</p> --}}
-        
+        @if (session('nameSongDeleted'))
+            <p style="color: green">Deleted '{{ session('nameSongDeleted') }}' order song</p>
+        @endif
     </div>
     <!-- hero play list -->
     <div class="hero-playlist">

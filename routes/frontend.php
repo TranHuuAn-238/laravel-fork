@@ -18,4 +18,8 @@ Route::name('frontend.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('/list-ordered', [HomeController::class, 'listOrdered'])->name('manage.list.ordered');
     Route::get('/detail-ordered/{id}', [HomeController::class, 'detailOrdered'])->name('manage.detail.ordered');
+    Route::get('/edit-ordered/{id}', [HomeController::class, 'editOrdered'])->name('manage.edit.ordered');
+
+    Route::get('/back', [HomeController::class, 'back'])->name('back');
+    Route::get('/cancel/{id}', [HomeController::class, 'cancel'])->name('cancel');
 });

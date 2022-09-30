@@ -34,4 +34,19 @@ class HomeController extends Controller
         $order = $this->orderRepo->getOrderToView($id);
         return view('frontend.manage.detail-ordered', compact('order'));
     }
+
+    public function editOrdered($id)
+    {
+        $order = $this->orderRepo->getOrderToView($id);
+        return view('frontend.manage.edit-ordered', compact('order'));
+    }
+
+    public function back()
+    {
+        return redirect()->route('frontend.manage.list.ordered');
+    }
+    public function cancel($id)
+    {
+        return redirect()->route('frontend.manage.detail.ordered', ['id' => $id]);
+    }
 }

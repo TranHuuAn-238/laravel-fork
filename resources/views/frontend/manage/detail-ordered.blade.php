@@ -1,6 +1,6 @@
 @extends('frontend.manage.layout-manage')
 
-@section('title', 'View Ordered')
+@section('title', 'Detail Ordered')
 
 @push('stylesheets')
     <style>
@@ -24,6 +24,9 @@
         <!-- heading -->
         <h3>Detail order songs</h3>
         <hr>
+        @if (session('notif'))
+            <p style="color: green">{{ session('notif') }}</p>
+        @endif
     </div>
     <!-- hero play list -->
     <div class="hero-playlist">
@@ -59,11 +62,7 @@
                 <label for="" class="labelText">Messages</label>
             </div>
             <div class="col-md-9">
-                @if ($order->message != null)
-                    <textarea name="" id="" cols="30" rows="5" style="resize: none; width: 75%" disabled>{{ $order->message }}</textarea>
-                @else
-                    <textarea name="" id="" cols="30" rows="5" style="resize: none; width: 75%" placeholder="This song don't have messages..." disabled></textarea>
-                @endif
+                <textarea name="" id="" cols="30" rows="5" style="resize: none; width: 75%" placeholder="This song don't have messages..." disabled>{{ $order->message }}</textarea>
             </div>
         </div>
         <br>
@@ -105,12 +104,16 @@
             <div class="col-md-3"></div>
             <div class="col-md-9">
                 @if ($order->banned != 1 && $order->approved_at == null)
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="{{ route('frontend.manage.edit.ordered', ['id' => $order->id]) }}" class="btn btn-primary">Edit</a>
                 &nbsp;
                 |
                 &nbsp;
                 @endif        
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a onclick="return confirm('Are u sure want to delele \'{{ $order->name_song }}\' song?')" href="{{ route('handle.delete.order', ['id' => $order->id]) }}" class="btn btn-danger">Delete</a>
+                &nbsp;
+                |
+                &nbsp;
+                <a href="{{ route('frontend.back') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
