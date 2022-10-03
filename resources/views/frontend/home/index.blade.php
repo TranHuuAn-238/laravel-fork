@@ -129,7 +129,7 @@
                                     <div class="song-info">
                                         <!-- song title -->
                                         <h4>{{ $order->name_song }}</h4>
-                                        <p><strong>Người đặt</strong>: Title </p>
+                                        <p><strong>Người đặt</strong>: {{ $order->username }} </p>
                                     </div>
                                     <!-- music icon -->
                                     <div class="music-icon">

@@ -14,7 +14,11 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
     public function getOrder()
     {
-        $ordersList = Order::orderBy('id', 'desc')->take(10)->get();
+        $ordersList = Order::orderBy('id', 'desc')->join('list_users', 'list_users.id', '=', 'orders.user_id')
+        ->take(10)
+        ->where('orders.status', 0)
+        ->whereNotNull('orders.approved_at')
+        ->get(['orders.*', 'list_users.username']);
         
         return $ordersList;
     }

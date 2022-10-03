@@ -42,7 +42,20 @@
                                 <div class="song-info">
                                     <!-- song title -->
                                     <h4>{{ $orderByUser->name_song }}</h4>
-                                    <p><strong>Thời gian đặt</strong>: {{ date('d-m-Y H:i:s' ,strtotime($orderByUser->created_at)) }} &nbsp;|&nbsp;<strong>Status</strong>: </p>
+                                    <p><strong>Thời gian đặt</strong>: {{ date('d-m-Y H:i:s' ,strtotime($orderByUser->created_at)) }} &nbsp;|&nbsp;<strong>Status</strong>: 
+                                        @if ($orderByUser->banned == Order::BANNED)
+                                            <label class="label label-danger">Rejected</label>
+                                        @elseif($orderByUser->approved_at != null)
+                                            <label class="label label-success">Approved</label>
+                                            @if ($orderByUser->approved_at != null && $orderByUser->status == 0)
+                                                (<span style="color: blue;"><strong>Still pending</strong></span>)
+                                            @elseif($orderByUser->approved_at != null && $orderByUser->status == 1)
+                                                (<span style="color: green;"><strong>Played</strong></span>)
+                                            @endif
+                                        @elseif($orderByUser->approved_at == null)
+                                            <label class="label label-info">Pending</label>
+                                        @endif
+                                    </p>
                                 </div>
                                 <!-- music icon -->
                                 <div class="music-icon">
