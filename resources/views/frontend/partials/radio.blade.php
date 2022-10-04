@@ -15,10 +15,10 @@
                         <div class="figure">
                             <!-- event date -->
                             <div class="event-date">
-                                24 <span class="emonth">Jan</span>
+                                {{ date('d', strtotime($radio->radio_time)) }} <span class="emonth">{{ date('M', strtotime($radio->radio_time)) }}</span>
                                 <div class="clearfix"></div>
                                 <!-- time -->
-                                <span class="etime">06:30 pm</span>
+                                <span class="etime">{{ date('h:i a', strtotime($radio->radio_time)) }}</span>
                             </div>
                             <!-- event location -->
                             <span class="event-location"><i class="fa fa-map-marker"></i> Zinza Technology</span>
@@ -27,16 +27,16 @@
                             <!-- image hover -->
                             <div class="img-hover">
                                 <!-- hover icon -->
-                                <a href="#"><i class="fa fa-play-circle"></i></a>
+                                <a href="{{ $radio->link_drive }}" target="_blank"><i class="fa fa-play-circle"></i></a>
                             </div>
                         </div>
                         <!-- event information -->
                         <div class="event-info">
                             <!-- event title -->
-                            <h3>Title</h3>
+                            <h3>{{ $radio->title }}</h3>
                             <!-- horizontal line --><hr />
                             <!-- paragraph -->
-                            <p>This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content </p>
+                            <p>{{ $radio->content }} </p>
                             <!-- buy ticket button link -->
                             {{-- <button href="#bookTicket" class="btn btn-lg btn-theme" data-toggle="modal" >Book Ticket</button> --}}
                         </div>

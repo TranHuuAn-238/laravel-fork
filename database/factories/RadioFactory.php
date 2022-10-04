@@ -22,6 +22,7 @@ class RadioFactory extends Factory
             'content' => fake()->realText(),
             'link_drive' => 'https://drive.google.com/file/d/' . Str::random(33) . '/view?usp=sharing',
             'radio_time' => now(),
+            'status' => rand(0,1),
         ];
     }
 }

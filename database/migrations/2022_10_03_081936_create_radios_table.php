@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('link_drive');
             $table->timestamp('radio_time')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
