@@ -36,6 +36,7 @@
         </button>
         </div>
         <div>
+            <div class="alert alert-danger" style="display:none"></div>
             <form action="{{ route('handle.create.order') }}" method="post">
                 @csrf
                 <div class="modal-body">
@@ -45,20 +46,26 @@
                     </div>
                     <div>
                         <label for="">Name of song <span class="spanRequire">*</span></label>
-                        <input type="text" name="name_song" class="inputType" placeholder="e.g. Đứa nào làm em buồn">
+                        <input type="text" name="name_song" id="name_song" class="inputType" value="{{ old('name_song') }}" placeholder="e.g. Đứa nào làm em buồn">
+                        @error('name_song')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <div>
                         <label for="">Link youtube of song <span class="spanRequire">*</span></label>
-                        <input type="text" name="link_song" class="inputType" placeholder="">
+                        <input type="text" name="link_song" id="link_song" class="inputType" value="{{ old('link_song') }}" placeholder="Paste link youtube of your song here...">
+                        @error('link_song')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <div>
                         <label for="">Message (Optional)</label>
-                        <textarea name="message" id="" cols="30" rows="5" class="inputType" style="resize: none;" placeholder="Some messages..."></textarea>
+                        <textarea name="message" id="message" cols="30" rows="5" class="inputType" style="resize: none;" placeholder="Some messages...">{{ old('message') }}</textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Order</button>
+                <button type="submit" class="btn btn-primary" id="formSubmit">Order</button>
                 </div>
             </form>
         </div>
@@ -75,6 +82,7 @@
             <hr>
             <!-- paragraph -->
             {{-- <p>We sing the best <strong class="theme-color">Songs</strong> and now we control the world best <strong class="theme-color">Music</strong>.</p> --}}
+            <div id="showNotif"></div>
             @if (session('nameSong'))
                 <p>You ordered successfully the song <strong class="theme-color">"{{ session('nameSong') }}"</strong>, please wait for admin approval</p>    
             @endif
@@ -147,3 +155,51 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+{{-- <script>
+    $(document).ready(function(){
+        $('#formSubmit').click(function(e){
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ url('/handle-create-order') }}",
+                method: 'post',
+                data: {
+                    name_song: $('#name_song').val(),
+                    link_song: $('#link_song').val(),
+                    message: $('#message').val(),
+                },
+                success: function(result){
+                    if(result.errors)
+                    {
+                        $('.alert-danger').html('');
+
+                        $.each(result.errors, function(key, value){
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<li>'+value+'</li>');
+                        });
+                    }
+                    else
+                    {
+                        $('.alert-danger').hide();
+                        $('#order').modal('hide');
+                        $('#showNotif').append('<p>You ordered successfully the song <strong class="theme-color">"' + result['nameSong'] + '"</strong>, please wait for admin approval</p> ');
+                    }
+                }
+            });
+        });
+    });
+</script> --}}
+    @if($errors->any())
+        <script>
+            $(document).ready(function(){
+                $('#order').modal({show: true});
+            });
+        </script>
+    @endif
+@endpush

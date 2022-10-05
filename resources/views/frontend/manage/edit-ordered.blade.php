@@ -37,6 +37,14 @@
                     <input class="inputText form-control" type="text" name="name_song" value="{{ $order->name_song }}">
                 </div>
             </div>
+            @error('name_song')
+            <div class="row wrap">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                    <div class="alert alert-danger" style="width: 75%;">{{ $message }}</div>
+                </div>
+            </div>
+            @enderror 
             <br>
             <div class="row wrap">
                 <div class="col-md-3">
@@ -46,6 +54,14 @@
                     <input class="inputText form-control" type="text" name="link_song" value="{{ $order->link_song }}">
                 </div>
             </div>
+            @error('link_song')
+                <div class="row wrap">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <div class="alert alert-danger" style="width: 75%;">{{ $message }}</div>
+                    </div>
+                </div>
+            @enderror
             <br>
             <div class="row">
                 <div class="col-md-3">

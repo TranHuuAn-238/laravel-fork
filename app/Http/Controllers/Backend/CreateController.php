@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use Exception;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\Http\Requests\OrderRequest;
 
 class CreateController extends Controller
 {
@@ -17,7 +18,7 @@ class CreateController extends Controller
         $this->orderRepo = $orderRepo;
     }
 
-    public function handleCreateOrder(Request $request)
+    public function handleCreateOrder(OrderRequest $request)
     {
         //$data = $request->all();
         // $order = new Order;
@@ -31,7 +32,19 @@ class CreateController extends Controller
         //Order::create(array_merge($user, $data)); // $user + $data
 
         try {
+            // $validator = \Validator::make($request->all(), [
+            //     'name_song' => 'required',
+            //     'link_song' => 'required',
+            // ]);
+            
+            // if ($validator->fails())
+            // {
+            //     return response()->json(['errors'=>$validator->errors()->all()]);
+            // }
+
             $this->orderRepo->createOrder($request);
+            // $nameSong = $request->name_song;
+            // return response()->json(['nameSong' => $nameSong]);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -40,7 +53,7 @@ class CreateController extends Controller
         return redirect()->route('frontend.home.index')->with('nameSong', $nameSong);
     }
 
-    public function handleEditOrder(Request $request, $id)
+    public function handleEditOrder(OrderRequest $request, $id)
     {
         try {
             $this->orderRepo->editOrder($request, $id);
